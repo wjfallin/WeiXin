@@ -17,7 +17,8 @@ import com.weixin.util.CheckUtil;
 import com.weixin.util.messageUtil;
 
 public class weixinServlet extends HttpServlet {
-  @Override
+  
+  
 protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
      String signature = req.getParameter("signature");
@@ -44,21 +45,20 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			String toUserName = map.get("ToUserName");
 			String createTime = map.get("CreateTime");
 			String msgType = map.get("MsgType");
-			String content = map.get("Content");
-			String msgId = map.get("MsgId");
-			
-			TextMessage text = new TextMessage();
-			if("text".equals(msgType)){
-				text.setToUserName(fromUserName);
-				text.setFromUserName(toUserName);
-				text.setCreateTime(new Date().getTime());
-				text.setMsgType("text");
-				text.setContent("您发送的消息是："+content);
+
+						
+			if(messageUtil.MESSAGE_TEXT.equals(msgType)){
+				String message = messageUtil.initTextMessage(fromUserName,toUserName,map);
+				out.print("success");
+				out.print(message);
+			}else if(messageUtil.MESSAGE_EVENT.equals(msgType)){
+				if(messageUtil.MESSAGE_SUBSCRIBE.equals(map.get("Event"))){
+				String newsMessage = messageUtil.initNewsMessage(fromUserName, toUserName, map);
+				out.print("success");
+				out.print(newsMessage);
+				}
 			}
-			String message =messageUtil.messageToXml(text);
-			System.out.println(message);
-			out.print("success");
-			out.print(message);
+
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
