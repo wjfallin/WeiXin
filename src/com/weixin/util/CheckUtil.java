@@ -5,6 +5,13 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 public class CheckUtil {
    private static final String token = "weijing";
+  /**
+   * 微信服务器验证
+   * @param signature
+   * @param timestamp
+   * @param nonce
+   * @return
+   */
    public static boolean checkSignature(String signature,String timestamp,String nonce){
 	   String[] arr = new String[]{token,timestamp,nonce};
 	   //排序

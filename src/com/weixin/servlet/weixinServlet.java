@@ -54,7 +54,8 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			}else if(messageUtil.MESSAGE_EVENT.equals(msgType)){
 				if(messageUtil.MESSAGE_SUBSCRIBE.equals(map.get("Event"))){
 				String newsMessage = messageUtil.initNewsMessage(fromUserName, toUserName, map);
-				out.print("success");
+				//out.print("success");
+				System.out.println(newsMessage);
 				out.print(newsMessage);
 				}
 			}

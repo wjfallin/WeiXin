@@ -54,7 +54,6 @@ public class messageUtil {
 	  SAXReader reader = new SAXReader();
 	  InputStream ins = req.getInputStream();
 	  Document doc =  reader.read(ins);
-	  
 	  Element root = doc.getRootElement();
 	  List<Element> list = root.elements();
 	  
@@ -88,7 +87,7 @@ public class messageUtil {
 	  textMessage.setToUserName(fromUserName);
 	  textMessage.setCreateTime(new Date().getTime());
 	  textMessage.setMsgType("text");
-	  textMessage.setContent("您发送的消息是："+map.get("content"));
+	  textMessage.setContent("您发送的消息是："+map.get("Content"));
 	  
 	  return textMessageToXml(textMessage);
   }
@@ -109,13 +108,13 @@ public class messageUtil {
       NewsMessage newsMessage = new NewsMessage();
       List<News> list = new ArrayList();
       news.setDescription("这是一个测试图文消息");
-      news.setPicUrl("");
+      news.setPicUrl("http://bb151a8d.ngrok.io/WeiXin/Image/Koala.jpg");
       news.setTitle("图文消息");
       news.setUrl("www.baidu.com");
       list.add(news);
       
-      newsMessage.setFromUserName(map.get("toUserName"));
-      newsMessage.setToUserName(map.get("fromUserName"));
+      newsMessage.setFromUserName(map.get("ToUserName"));
+      newsMessage.setToUserName(map.get("FromUserName"));
       newsMessage.setCreateTime(new Date().getTime());
       newsMessage.setMsgType(MESSAGE_NEWS);
       newsMessage.setArticlecount(list.size());

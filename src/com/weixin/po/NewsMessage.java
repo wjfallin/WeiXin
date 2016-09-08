@@ -3,18 +3,18 @@ package com.weixin.po;
 import java.util.List;
 
 public class NewsMessage extends BaseMessage{
-	private int articlecount;
-	private List<News> articles;
+	private int ArticleCount;
+	private List<News> Articles;
 	public int getArticlecount() {
-		return articlecount;
+		return ArticleCount;
 	}
 	public void setArticlecount(int articlecount) {
-		this.articlecount = articlecount;
+		this.ArticleCount = articlecount;
 	}
 	public List<News> getArticles() {
-		return articles;
+		return Articles;
 	}
 	public void setArticles(List<News> articles) {
-		this.articles = articles;
+		this.Articles = articles;
 	}
 }
