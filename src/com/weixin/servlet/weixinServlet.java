@@ -58,6 +58,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 				System.out.println(newsMessage);
 				out.print(newsMessage);
 				}
+				if(messageUtil.MESSAGE_CLICK.equals(map.get("Event")) & "2-1".equals(map.get("EventKey"))){
+					String newsMessage = messageUtil.initTextMessage(fromUserName,toUserName,map);	
+				}
 			}
 
 		} catch (DocumentException e) {
